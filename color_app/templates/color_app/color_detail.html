@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="row">
+    <div class="col text-center">
+      <h1>{{color.name}}</h1>
+      <p>{{color.hex_code}}</p>
+      <p>
+        <a href="{% url 'color_app:color_list' %}">
+          Back to the color list        
+        </a>  
+      </p>
+    </div>      
+  </div>
+  <h2>Hues</h2>
+  <div class="swatches">
+    {% for color in hues %}
+      <div class="swatch">
+        {% include "color_app/swatch.html" %}
+      </div>      
+    {% endfor %}
+  </div>
+  <script src="{% static 'color_app/offset_swatches.js' %}"></script>
+{% endblock %}
